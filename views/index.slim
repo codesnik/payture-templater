@@ -1,0 +1,10 @@
+- unless @templates.any?
+  h3
+    ' There is no any templates. Did you put it into
+    u Templates/
+    |  directory?
+- else
+  h3 Available templates
+  ul
+    - @templates.each do |template|
+      li : a href="/show?template=#{template}"= template
