@@ -7,9 +7,7 @@ Payture templates renderer
 ```
 git clone https://github.com/kressh/payture-templater.git
 cd payture-templater
-make
+ruby templater.rb path/to/publicdir
 ```
 
-Go to `http://localhost:8080` in browser
-
-Do not forget to copy your templates to public/Templates dir
+Go to `http://localhost:4567` in browser
