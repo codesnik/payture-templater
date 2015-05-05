@@ -10,6 +10,7 @@ unless ARGV[0]
   exit 1
 end
 
+enable :logging
 set :public_folder, ARGV[0]
 set :args_file, ARGV[1]
 
@@ -33,6 +34,13 @@ get '/show' do
   content.gsub!(/{(.*?)}/) do
     args[$1] || "{#{$1}}"
   end
+end
+
+post '*' do
+  @args = params.dup
+  @args.delete_if {|k, v| k == "splat" || k == "captures" }
+  @args = @args.sort
+  slim(:post)
 end
 
 puts "open http://localhost:4567/"
